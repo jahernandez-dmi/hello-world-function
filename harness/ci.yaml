@@ -32,7 +32,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: org.CTAcluster
-              namespace: default
+              namespace: harness-dmi-sandbox
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
