@@ -1,0 +1,38 @@
+pipeline:
+  name: Hello-world-function
+  identifier: Helloworldfunction
+  projectIdentifier: Cloud_Functions
+  orgIdentifier: CCRA
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Joses_GitHub
+        build: <+input>
+  stages:
+    - stage:
+        name: Audit
+        identifier: Audit
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: node:18
+                    shell: Sh
+                    command: npm run build
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: org.CTAcluster
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
