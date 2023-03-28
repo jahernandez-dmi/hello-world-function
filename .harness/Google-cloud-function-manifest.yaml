@@ -1,0 +1,10 @@
+# Following are the minimum set of parameters required to create a Google Cloud Function.
+# Please make sure your uploaded manifest file includes all of them.
+
+function:
+  name: hello-world-function
+  buildConfig:
+    runtime: nodejs18
+    entryPoint: helloWorld
+  environment: GEN_2
+function_id: hello-world-function
