@@ -28,7 +28,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       npm install
-                      mdkir deploy
+                      mkdir deploy
                       mv index.js package.json deploy/
               - step:
                   type: GCSUpload
