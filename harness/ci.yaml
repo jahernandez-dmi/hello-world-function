@@ -26,10 +26,11 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: node:18-alpine
                     shell: Sh
-                    command: |-
+                    command: |
+                      apk add zip
                       npm install
                       mkdir deploy
-                      mv index.js package.json deploy/
+                      zip -r deploy/code.zip ./*.js ./package.json
               - step:
                   type: GCSUpload
                   name: Upload Code
