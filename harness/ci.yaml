@@ -26,15 +26,18 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: node:18-alpine
                     shell: Sh
-                    command: npm install
+                    command: |-
+                      npm install
+                      mdkir deploy
+                      mv index.js package.json deploy/
               - step:
                   type: GCSUpload
                   name: Upload Code
                   identifier: Upload_Code
                   spec:
                     connectorRef: commercetoolsacceleratordev
-                    bucket: hello-world-function-soruce
-                    sourcePath: .
+                    bucket: hello-world-function-source
+                    sourcePath: deploy
           infrastructure:
             type: KubernetesDirect
             spec:
