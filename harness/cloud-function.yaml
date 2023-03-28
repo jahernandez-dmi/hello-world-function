@@ -1,0 +1,7 @@
+function:
+  name: hello-world-function
+  buildConfig:
+    runtime: nodejs18
+    entryPoint: helloWorld
+  environment: GEN_2
+function_id: hello-world-function
