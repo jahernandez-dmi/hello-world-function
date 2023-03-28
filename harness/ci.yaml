@@ -28,6 +28,14 @@ pipeline:
                     image: node:18
                     shell: Sh
                     command: npm run build
+              - step:
+                  type: GCSUpload
+                  name: Upload Code
+                  identifier: Upload_Code
+                  spec:
+                    connectorRef: commercetoolsacceleratordev
+                    bucket: hello-world-function-soruce
+                    sourcePath: .
           infrastructure:
             type: KubernetesDirect
             spec:
