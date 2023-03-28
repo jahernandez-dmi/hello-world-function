@@ -11,9 +11,8 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: Audit
+        name: Build
         identifier: Audit
-        description: ""
         type: CI
         spec:
           cloneCodebase: true
@@ -25,9 +24,9 @@ pipeline:
                   identifier: Build
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:18
+                    image: node:18-alpine
                     shell: Sh
-                    command: npm run build
+                    command: npm install
               - step:
                   type: GCSUpload
                   name: Upload Code
